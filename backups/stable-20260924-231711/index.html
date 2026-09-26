@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Qist Khata App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="appShell">
+      <section id="welcomeScreen" class="screen">
+        <div class="welcome-page-shell">
+          <div class="welcome-panel" dir="rtl">
+            <div class="welcome-orbit welcome-orbit-one" aria-hidden="true"></div>
+            <div class="welcome-orbit welcome-orbit-two" aria-hidden="true"></div>
+            <div class="welcome-kicker"><span class="welcome-kicker-dot"></span> دکانداروں کے لیے آسان حساب</div>
+            <div class="welcome-brand" dir="ltr"><span class="welcome-brand-mark">QK</span><strong>QIST KHATA</strong></div>
+            <h1>اپنا کاروبار،<br /><span>اب آسان</span></h1>
+            <p class="welcome-copy">قسطوں، گاہکوں اور روزمرہ حساب کتاب کو ایک خوبصورت، سادہ اور قابلِ اعتماد جگہ پر منظم کریں۔</p>
+
+            <div class="business-visual" aria-hidden="true">
+              <div class="visual-card visual-card-main"><span class="visual-icon">✓</span><strong>حساب منظم</strong><small>ہر لین دین محفوظ</small></div>
+              <div class="visual-card visual-card-small"><span class="visual-icon">₨</span><strong>قسطیں</strong></div>
+              <div class="visual-chart"><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+
+            <div class="quote-list">
+              <div class="quote-item"><span class="quote-icon" aria-hidden="true">✓</span><span>حساب صاف، کاروبار مضبوط</span></div>
+              <div class="quote-item"><span class="quote-icon" aria-hidden="true">↗</span><span>ہر قسط کا حساب، ایک جگہ</span></div>
+              <div class="quote-item"><span class="quote-icon" aria-hidden="true">♡</span><span>گاہک بھی خوش، حساب بھی آسان</span></div>
+            </div>
+
+            <div class="welcome-actions" dir="ltr">
+              <button id="welcomeLoginBtn" type="button" class="primary-btn">Login <span aria-hidden="true">→</span></button>
+              <button id="welcomeRegisterBtn" type="button" class="welcome-secondary-btn">Create Account <span aria-hidden="true">+</span></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="authScreen" class="screen hidden">
+        <div class="auth-shell auth-only-shell">
+
+          <div class="auth-card">
+            <div class="brand-badge">Qist Khata</div>
+            <h1>Shopkeeper Ledger</h1>
+            <p class="auth-subtitle">Track customers, installments, and payments with ease.</p>
+
+            <div class="auth-tabs">
+              <button type="button" class="auth-tab active" data-auth-tab="login">Login</button>
+              <button type="button" class="auth-tab" data-auth-tab="register">Create Account</button>
+            </div>
+
+            <form id="loginForm" class="auth-form">
+              <label>
+                Mobile Number
+                <input type="tel" id="loginMobile" placeholder="03xx-xxxxxxx" required />
+              </label>
+              <label>
+                Password
+                <input type="password" id="loginPassword" placeholder="Enter password" required />
+              </label>
+              <button type="submit" class="primary-btn full">Login</button>
+            </form>
+
+            <form id="registerForm" class="auth-form hidden">
+              <label>
+                Shop Name
+                <input type="text" id="registerShopName" placeholder="e.g. City General Store" required />
+              </label>
+              <label>
+                Owner Name
+                <input type="text" id="registerOwnerName" placeholder="Full name" required />
+              </label>
+              <label>
+                Mobile Number
+                <input type="tel" id="registerMobile" placeholder="03xx-xxxxxxx" required />
+              </label>
+              <label>
+                Password
+                <input type="password" id="registerPassword" placeholder="Create password" required />
+              </label>
+              <button type="submit" class="primary-btn full">Create Account</button>
+            </form>
+
+            <div class="auth-divider"><span>System access</span></div>
+            <button id="adminAccessBtn" type="button" class="admin-access-btn">Admin Panel Login</button>
+
+            <form id="adminLoginForm" class="auth-form admin-login-form hidden">
+              <div class="admin-login-heading"><strong>Super Admin Login</strong><span class="demo-admin-note">Demo account · local development only</span></div>
+              <label>
+                Mobile / Email
+                <input type="text" id="adminEmail" placeholder="Enter admin mobile or email" autocomplete="username" required />
+              </label>
+              <label>
+                Password
+                <input type="password" id="adminPassword" placeholder="Enter admin password" autocomplete="current-password" required />
+              </label>
+              <button type="submit" class="primary-btn full">Open Admin Panel</button>
+              <button id="cancelAdminLoginBtn" type="button" class="ghost-btn full">Back to Shopkeeper Login</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="mainApp" class="screen hidden">
+        <header class="topbar">
+          <div class="brand-block">
+            <span class="brand-chip">Qist Khata</span>
+            <div>
+              <p class="eyebrow">Installment Book</p>
+              <h2 id="shopNameHeader">Qist Khata</h2>
+              <p class="brand-tagline" dir="rtl">اپنا کاروبار، اب آسان</p>
+            </div>
+          </div>
+
+          <nav class="topbar-actions">
+            <button class="chip-btn active" data-view="dashboard">Dashboard</button>
+            <button class="chip-btn" data-view="customers">Customers</button>
+            <button class="chip-btn" data-view="settings">Settings</button>
+            <button id="logoutBtn" class="secondary-btn">Logout</button>
+          </nav>
+        </header>
+
+        <main class="page-content">
+          <section id="dashboardView" class="view active">
+            <div class="dashboard-welcome panel">
+              <div>
+                <p class="eyebrow">Qist Khata · Smart shop management</p>
+                <h1 id="dashboardGreeting">Welcome back</h1>
+                <p id="dashboardDate" class="welcome-date"></p>
+                <span id="subscriptionStatusBadge" class="subscription-badge">Free Plan · Active</span>
+              </div>
+              <div class="welcome-mark" aria-hidden="true">QK</div>
+            </div>
+
+            <div class="stats-grid">
+              <article class="stat-card blue">
+                <div class="stat-card-top"><span>Total Customers</span><span class="metric-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16 20v-1.5a4.5 4.5 0 0 0-4.5-4.5h-3A4.5 4.5 0 0 0 4 18.5V20"/><circle cx="10" cy="7" r="3"/><path d="M16 4.5a3 3 0 0 1 0 5.8M20 19v-1a4 4 0 0 0-3-3.9"/></svg></span></div>
+                <strong id="totalCustomers">0</strong>
+              </article>
+              <article class="stat-card green">
+                <div class="stat-card-top"><span>Total Outstanding</span><span class="metric-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M7 15h3"/></svg></span></div>
+                <strong id="totalOutstanding">0</strong>
+              </article>
+              <article class="stat-card orange">
+                <div class="stat-card-top"><span>Today's Due</span><span class="metric-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 9h16M8 13h3M8 16h5"/></svg></span></div>
+                <strong id="todayDueCount">0</strong>
+              </article>
+              <article class="stat-card purple">
+                <div class="stat-card-top"><span>Upcoming Qist</span><span class="metric-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2M4 4l2 2M20 4l-2 2"/></svg></span></div>
+                <strong id="upcomingQistCount">0</strong>
+              </article>
+              <article class="stat-card red">
+                <div class="stat-card-top"><span>Overdue</span><span class="metric-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 3.5 19h17L12 3Z"/><path d="M12 9v4M12 16h.01"/></svg></span></div>
+                <strong id="overdueCount">0</strong>
+              </article>
+            </div>
+
+            <div class="split-grid">
+              <div class="panel">
+                <div class="section-header">
+                  <h3>Today Due</h3>
+                </div>
+                <div id="todayDueList" class="list-stack"></div>
+              </div>
+
+              <div class="panel">
+                <div class="section-header">
+                  <h3>Upcoming Qist</h3>
+                </div>
+                <div id="upcomingDueList" class="list-stack"></div>
+              </div>
+
+              <div class="panel full-span">
+                <div class="section-header">
+                  <h3>Overdue</h3>
+                </div>
+                <div id="overdueList" class="list-stack"></div>
+              </div>
+            </div>
+
+            <div class="broadcast-grid">
+              <div class="panel broadcast-panel">
+                <div class="section-header"><div><p class="eyebrow">From Qist Khata</p><h3>Announcements</h3></div><span class="section-mark">✦</span></div>
+                <div id="activeAdsList" class="broadcast-list"></div>
+              </div>
+              <div class="panel broadcast-panel">
+                <div class="section-header"><div><p class="eyebrow">Stay up to date</p><h3>Important Updates</h3></div><span class="section-mark">↗</span></div>
+                <div id="importantUpdatesList" class="broadcast-list"></div>
+              </div>
+            </div>
+
+            <div class="panel plans-overview-panel">
+              <div class="section-header"><div><p class="eyebrow">Flexible options</p><h3>Available Plans</h3></div><span class="section-mark">₨</span></div>
+              <div id="shopkeeperPlansList" class="shopkeeper-plans-grid"></div>
+            </div>
+          </section>
+
+          <section id="customersView" class="view hidden">
+            <div class="toolbar">
+              <div class="page-heading"><p class="eyebrow">People and purchase plans</p><h1>Customer Directory</h1></div>
+              <div class="toolbar-actions"><input id="customerSearchInput" type="search" placeholder="Search by name, mobile or product" /><button id="addCustomerBtn" class="primary-btn">+ Add Customer</button></div>
+            </div>
+
+            <div id="customerFormPanel" class="panel hidden">
+              <div class="section-header">
+                <h3 id="customerFormTitle">Add Customer</h3>
+                <button id="cancelCustomerFormBtn" type="button" class="ghost-btn">Cancel</button>
+              </div>
+
+              <form id="customerForm" class="two-column-form">
+                <label>
+                  Customer Name
+                  <input id="customerName" type="text" required />
+                </label>
+                <label>
+                  Mobile Number
+                  <input id="customerMobile" type="tel" required />
+                </label>
+                <label>
+                  CNIC
+                  <input id="customerCnic" type="text" placeholder="37401-1234567-8" />
+                </label>
+                <label>
+                  Member
+                  <select id="customerMember">
+                    <option value="Silver">Silver</option>
+                    <option value="Gold">Gold</option>
+                    <option value="Platinum">Platinum</option>
+                    <option value="Regular">Regular</option>
+                  </select>
+                </label>
+                <label class="full-span">
+                  Address
+                  <input id="customerAddress" type="text" placeholder="Street / Area / City" />
+                </label>
+                <label>
+                  Product Name
+                  <input id="productName" type="text" required />
+                </label>
+                <label>
+                  Product Price (PKR)
+                  <input id="productPrice" type="number" min="0" step="100" required />
+                </label>
+                <label>
+                  Advance Payment
+                  <input id="advancePayment" type="number" min="0" step="100" value="0" />
+                </label>
+                <label>
+                  Installment Amount
+                  <input id="installmentAmount" type="number" min="0" step="100" required />
+                </label>
+                <label>
+                  Next Installment Date
+                  <input id="nextInstallmentDate" type="date" required />
+                </label>
+                <label class="full-span">
+                  Note
+                  <textarea id="customerNote" rows="3" placeholder="Any special note about this customer"></textarea>
+                </label>
+
+                <div class="full-span auto-balance-box">
+                  <span>Auto Outstanding</span>
+                  <strong id="autoOutstandingText">PKR 0</strong>
+                </div>
+
+                <div class="full-span">
+                  <button type="submit" class="primary-btn full">Save Customer</button>
+                </div>
+              </form>
+            </div>
+
+            <div id="customerList" class="customer-grid"></div>
+          </section>
+
+          <section id="settingsView" class="view hidden">
+            <div class="panel">
+              <div class="section-header">
+                <div><p class="eyebrow">Workspace preferences</p><h3>Admin Settings</h3></div>
+              </div>
+
+              <form id="settingsForm" class="two-column-form">
+                <label>
+                  Shop Name
+                  <input id="settingsShopName" type="text" required />
+                </label>
+                <label>
+                  Owner Name
+                  <input id="settingsOwnerName" type="text" required />
+                </label>
+                <label>
+                  Mobile Number
+                  <input id="settingsMobile" type="tel" required />
+                </label>
+                <label class="full-span">
+                  Shop Address
+                  <input id="settingsShopAddress" type="text" placeholder="Street, area and city" />
+                </label>
+                <label>
+                  WhatsApp Number
+                  <input id="settingsWhatsapp" type="tel" placeholder="03xx-xxxxxxx" />
+                </label>
+                <label>
+                  Easypaisa Number
+                  <input id="settingsEasypaisa" type="tel" placeholder="03xx-xxxxxxx" />
+                </label>
+                <label>
+                  Service Charge (%)
+                  <input id="settingsServiceCharge" type="number" min="0" step="0.5" />
+                </label>
+                <label>
+                  Bank Name
+                  <input id="settingsBankName" type="text" placeholder="HBL / Allied Bank" />
+                </label>
+                <label class="full-span">
+                  Bank Account / IBAN
+                  <input id="settingsBankAccount" type="text" placeholder="Account number or IBAN" />
+                </label>
+
+                <div class="full-span">
+                  <button type="submit" class="primary-btn full">Save Shop Profile</button>
+                </div>
+              </form>
+            </div>
+          </section>
+        </main>
+      </section>
+
+      <section id="adminApp" class="screen hidden">
+        <header class="admin-topbar">
+          <div class="admin-brand"><span class="admin-brand-mark">QK</span><div><p class="eyebrow">Super Admin Console</p><h2>Qist Khata Admin</h2></div></div>
+          <button id="adminLogoutBtn" type="button" class="secondary-btn">Admin Logout</button>
+        </header>
+        <div class="admin-layout">
+          <aside class="admin-sidebar">
+            <p class="admin-nav-label">Control Center</p>
+            <button class="admin-nav-btn active" data-admin-view="adminDashboard">Dashboard</button>
+            <button class="admin-nav-btn" data-admin-view="adminShops">Shopkeepers / Users</button>
+            <button class="admin-nav-btn" data-admin-view="adminManagement">Shop Management</button>
+            <button class="admin-nav-btn" data-admin-view="adminSubscriptions">Subscriptions</button>
+            <button class="admin-nav-btn" data-admin-view="adminAnnouncements">Announcements</button>
+            <button class="admin-nav-btn" data-admin-view="adminAds">Ads &amp; Announcements</button>
+            <button class="admin-nav-btn" data-admin-view="adminUpdates">App Updates</button>
+            <button class="admin-nav-btn" data-admin-view="adminPlans">Plans &amp; Charges</button>
+            <button class="admin-nav-btn" data-admin-view="adminServiceCharges">Service Charges</button>
+            <button class="admin-nav-btn" data-admin-view="adminPayments">Payment Settings</button>
+            <button class="admin-nav-btn" data-admin-view="adminReports">Reports</button>
+            <button class="admin-nav-btn" data-admin-view="adminSystem">System Settings</button>
+          </aside>
+
+          <main class="admin-content">
+            <section id="adminDashboard" class="admin-view">
+              <div class="admin-heading"><div><p class="eyebrow">Owner overview</p><h1>System Dashboard</h1><p>Monitor your Qist Khata network from one place.</p></div><span class="admin-live-badge">● System Online</span></div>
+              <div class="admin-stats-grid">
+                <article class="admin-stat-card blue"><span>Registered Shops</span><strong id="adminShopCount">0</strong></article>
+                <article class="admin-stat-card green"><span>Active Shops</span><strong id="adminActiveShopCount">0</strong></article>
+                <article class="admin-stat-card purple"><span>Active Ads</span><strong id="adminAdCount">0</strong></article>
+                <article class="admin-stat-card orange"><span>Published Updates</span><strong id="adminUpdateCount">0</strong></article>
+                <article class="admin-stat-card green"><span>Active Subscriptions</span><strong id="adminSubscriptionCount">0</strong></article>
+              </div>
+              <div class="admin-dashboard-grid"><div class="admin-panel"><div class="section-header"><h3>Recent Shops</h3></div><div id="adminRecentShops"></div></div><div class="admin-panel"><div class="section-header"><h3>Admin Notes</h3></div><div class="admin-note-list"><div><strong>Broadcasts</strong><span>Active ads appear on every shopkeeper dashboard.</span></div><div><strong>Access control</strong><span>Only the separate super admin session can open this console.</span></div></div></div></div>
+            </section>
+
+            <section id="adminShops" class="admin-view hidden"><div class="admin-heading"><div><p class="eyebrow">Accounts and access</p><h1>Shopkeepers / Users</h1></div></div><div class="admin-panel"><div id="adminShopkeepersTable" class="admin-table-wrap"></div></div></section>
+            <section id="adminManagement" class="admin-view hidden"><div class="admin-heading"><div><p class="eyebrow">Business network</p><h1>Shop Management</h1></div></div><div class="admin-panel"><div id="adminManagementContent"></div></div></section>
+
+            <section id="adminSubscriptions" class="admin-view hidden"><div class="admin-heading"><div><p class="eyebrow">Recurring access</p><h1>Subscriptions</h1></div></div><div class="admin-two-column"><form id="adminSubscriptionForm" class="admin-panel admin-form"><h3>Manage Shopkeeper Subscription</h3><select id="subscriptionUser" required></select><select id="subscriptionPlan" required></select><select id="subscriptionStatus"><option value="active">Active</option><option value="trial">Trial</option><option value="expired">Expired</option><option value="cancelled">Cancelled</option></select><input id="subscriptionStart" type="date" required /><input id="subscriptionExpiry" type="date" required /><button type="submit" class="primary-btn">Save Subscription</button></form><div class="admin-panel"><div class="section-header"><h3>Subscription Overview</h3></div><div id="adminSubscriptionsList" class="admin-item-list"></div></div></div></section>
+
+            <section id="adminAnnouncements" class="admin-view hidden"><div class="admin-heading"><div><p class="eyebrow">Direct communication</p><h1>Announcements</h1></div></div><div class="admin-two-column"><form id="adminAnnouncementForm" class="admin-panel admin-form"><h3 id="adminAnnouncementFormTitle">Create Announcement</h3><input id="editingAnnouncementId" type="hidden" /><input id="announcementTitle" placeholder="Announcement title" required /><textarea id="announcementDescription" rows="5" placeholder="Announcement message" required></textarea><label class="toggle-row"><input id="announcementImportant" type="checkbox" /> Important announcement</label><label class="toggle-row"><input id="announcementActive" type="checkbox" checked /> Active announcement</label><button id="adminAnnouncementSubmit" type="submit" class="primary-btn">Publish Announcement</button></form><div class="admin-panel"><div class="section-header"><h3>Published Announcements</h3></div><div id="adminAnnouncementsList" class="admin-item-list"></div></div></div></section>
+
+            <section id="adminAds" class="admin-view hidden"><div class="admin-heading"><div><p class="eyebrow">Reach shopkeepers</p><h1>Advertisements</h1></div></div><div class="admin-two-column"><form id="adminAdForm" class="admin-panel admin-form"><h3 id="adminAdFormTitle">Create Advertisement</h3><input id="editingAdId" type="hidden" /><input id="adTitle" placeholder="Title" required /><textarea id="adDescription" rows="4" placeholder="Description" required></textarea><input id="adImage" type="url" placeholder="Banner image URL (optional)" /><input id="adButtonText" placeholder="Button text (optional)" /><input id="adLink" type="url" placeholder="Button link (optional)" /><div class="admin-form-row"><input id="adStartDate" type="date" aria-label="Start date" /><input id="adEndDate" type="date" aria-label="End date" /></div><label class="toggle-row"><input id="adActive" type="checkbox" checked /> Active advertisement</label><button id="adminAdSubmit" type="submit" class="primary-btn">Publish Advertisement</button></form><div class="admin-panel"><div class="section-header"><h3>Published Ads</h3></div><div id="adminAdsList" class="admin-item-list"></div></div></div></section>
+
+            <section id="adminUpdates" class="admin-view hidden"><div class="admin-heading"><div><p class="eyebrow">Product communication</p><h1>App Updates</h1></div></div><div class="admin-two-column"><form id="adminUpdateForm" class="admin-panel admin-form"><h3>Publish Update</h3><input id="updateTitle" placeholder="Update title" required /><input id="updateVersion" placeholder="Version e.g. v1.2.0" required /><input id="updateDate" type="date" required /><textarea id="updateDescription" rows="5" placeholder="What changed?" required></textarea><label class="toggle-row"><input id="updateImportant" type="checkbox" checked /> Mark as important</label><button type="submit" class="primary-btn">Publish Update</button></form><div class="admin-panel"><div class="section-header"><h3>Published Updates</h3></div><div id="adminUpdatesList" class="admin-item-list"></div></div></div></section>
+
+            <section id="adminPlans" class="admin-view hidden"><div class="admin-heading"><div><p class="eyebrow">Flexible monetization</p><h1>Plans</h1></div></div><div class="admin-two-column"><form id="adminPlanForm" class="admin-panel admin-form"><h3 id="adminPlanFormTitle">Create Plan</h3><input id="editingPlanId" type="hidden" /><input id="planName" placeholder="Plan name" required /><input id="planMonthlyPrice" type="number" min="0" placeholder="Monthly price (PKR)" required /><input id="planYearlyPrice" type="number" min="0" placeholder="Yearly price (PKR)" required /><input id="planCustomerLimit" type="number" min="0" placeholder="Customer limit (0 = unlimited)" required /><textarea id="planFeatures" rows="3" placeholder="Features, separated by commas"></textarea><textarea id="planDescription" rows="3" placeholder="Plan description"></textarea><label class="toggle-row"><input id="planActive" type="checkbox" checked /> Active plan</label><button id="adminPlanSubmit" type="submit" class="primary-btn">Create Plan</button></form><div class="admin-panel"><div class="section-header"><h3>Available Plans</h3></div><div id="adminPlansList" class="admin-item-list"></div></div></div></section>
+
+            <section id="adminServiceCharges" class="admin-view hidden"><div class="admin-heading"><div><p class="eyebrow">Platform monetization</p><h1>Service Charges</h1></div></div><form id="adminServiceChargeForm" class="admin-panel admin-form narrow-form"><h3>Configure Application Charges</h3><input id="serviceChargeDefault" type="number" min="0" step="0.1" placeholder="Default service charge (%)" required /><input id="serviceChargePayment" type="number" min="0" step="0.1" placeholder="Payment processing charge (%)" required /><input id="serviceChargeOverdue" type="number" min="0" step="1" placeholder="Overdue fixed fee (PKR)" required /><textarea id="serviceChargeNotes" rows="3" placeholder="Notes shown to shopkeepers"></textarea><button type="submit" class="primary-btn">Save Service Charges</button></form></section>
+
+            <section id="adminPayments" class="admin-view hidden"><div class="admin-heading"><div><p class="eyebrow">Money movement</p><h1>Payment Settings</h1></div></div><form id="adminPaymentForm" class="admin-panel admin-form narrow-form"><h3>Platform Payment Details</h3><input id="adminPaymentName" placeholder="Account holder name" required /><input id="adminPaymentEasypaisa" placeholder="Easypaisa number" /><input id="adminPaymentJazzcash" placeholder="JazzCash number" /><input id="adminPaymentBank" placeholder="Bank name" required /><input id="adminPaymentAccount" placeholder="Account number / IBAN" required /><input id="adminPaymentInstructions" placeholder="Payment instructions" /><button type="submit" class="primary-btn">Save Payment Settings</button></form></section>
+
+            <section id="adminReports" class="admin-view hidden"><div class="admin-heading"><div><p class="eyebrow">System intelligence</p><h1>Reports</h1></div></div><div class="admin-stats-grid report-stats"><article class="admin-stat-card blue"><span>Total Users</span><strong id="adminTotalUsers">0</strong></article><article class="admin-stat-card green"><span>Active Users</span><strong id="adminActiveUsers">0</strong></article><article class="admin-stat-card purple"><span>Free Users</span><strong id="adminFreeUsers">0</strong></article><article class="admin-stat-card orange"><span>Pro Users</span><strong id="adminProUsers">0</strong></article><article class="admin-stat-card red"><span>Business Users</span><strong id="adminBusinessUsers">0</strong></article><article class="admin-stat-card green"><span>Active Subscriptions</span><strong id="adminActiveSubscriptions">0</strong></article><article class="admin-stat-card red"><span>Expired Subscriptions</span><strong id="adminExpiredSubscriptions">0</strong></article><article class="admin-stat-card blue"><span>Total Recorded Revenue</span><strong id="adminRecordedRevenue">PKR 0</strong></article><article class="admin-stat-card orange"><span>Monthly Revenue</span><strong id="adminMonthlyRevenue">PKR 0</strong></article><article class="admin-stat-card purple"><span>Advertisement Count</span><strong id="adminAdvertisementCount">0</strong></article></div><div class="admin-panel"><div id="adminReportDetails"></div></div></section>
+
+            <section id="adminSystem" class="admin-view hidden"><div class="admin-heading"><div><p class="eyebrow">Platform controls</p><h1>System Settings</h1></div></div><form id="adminSystemForm" class="admin-panel admin-form narrow-form"><h3>System Preferences</h3><label class="toggle-row"><input id="systemMaintenance" type="checkbox" /> Maintenance mode</label><label class="toggle-row"><input id="systemAllowRegistration" type="checkbox" checked /> Allow new shopkeeper registration</label><label class="toggle-row"><input id="systemShowUpdates" type="checkbox" checked /> Show updates on shopkeeper dashboard</label><button type="submit" class="primary-btn">Save System Settings</button></form></section>
+          </main>
+        </div>
+      </section>
+    </div>
+
+    <aside id="khataPanel" class="khata-panel hidden">
+      <div class="khata-header">
+        <div>
+          <p class="eyebrow">Customer Khata</p>
+          <h3 id="khataTitle">Customer Details</h3>
+        </div>
+        <button id="closeKhataBtn" type="button" class="ghost-btn">Close</button>
+      </div>
+
+      <div id="khataContent"></div>
+    </aside>
+
+    <div id="toastContainer" class="toast-container"></div>
+
+    <div id="receiptModal" class="receipt-modal hidden" role="dialog" aria-modal="true" aria-labelledby="receiptTitle">
+      <div class="receipt-card">
+        <div class="receipt-actions">
+          <span class="eyebrow">Printable receipt</span>
+          <div>
+            <button id="printReceiptBtn" type="button" class="small-btn">Print</button>
+            <button id="closeReceiptBtn" type="button" class="ghost-btn">Close</button>
+          </div>
+        </div>
+        <div id="receiptContent"></div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
